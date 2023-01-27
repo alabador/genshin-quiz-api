@@ -19,6 +19,9 @@ MongoClient.connect(connectionString, {useUnifiedTopology: true})
         console.log('Connected to Database...');
         db = client.db('genshin-trivia');
         skillCollection = db.collection('chars');
+        app.listen(3000, function() {
+            console.log('listening on 3000');
+        })
     }) 
     .catch(error => console.error(error));
 
@@ -72,6 +75,6 @@ app.delete('/skills', (req, res) => {
     .catch(error => console.error(error))
 })
 
-app.listen(3000, function() {
-    console.log('listening on 3000');
-})
+// app.listen(3000, function() {
+//     console.log('listening on 3000');
+// })

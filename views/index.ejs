@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Genshin Wish List</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body class="container">
+  <section class="container">
+    <h1> Genshin Wish List </h1>
+  </section>
+  <form action="/skills" method="POST">
+    <input type="text" placeholder="character" name="character">
+    <button type="submit">Submit</button>
+  </form>
+
+  <div>
+    <div>
+      <h2>Ayaya is here!</h2>
+      <p>
+        Kamisato Ayaka's banner will be running indefinitely until the patch ends.
+        <br>
+        Replace the next character from the top that is not Ayaka, with Ayaka.
+      </p>
+      <button id="update-button">Replace Next Character</button>
+    </div>
+
+    <div>
+      <h2>Spring Cleaning!</h2>
+      <p>
+        Paimon has had enough of Ayaka's banner. She wants to wish on another character already!! 
+        <br>
+        Does nothing if Ayaka is not present.
+      </p>
+      <button id="delete-button">Delete Ayaka</button>
+      <div id="message"></div>
+    </div>
+  </div>
+
+  <h2>Characters</h2>
+  <ul class="skills">
+    <% for (let i=0; i<skills.length; i++) {%>
+        <li class="character">
+            <article><%= skills[i].character %></article>
+        </li>
+    <% } %>
+  </ul>
+
+  <script src="/main.js"></script>
+</body>
+</html>

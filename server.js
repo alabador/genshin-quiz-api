@@ -14,16 +14,17 @@ let connectionString = process.env.DB_LOGIN
 let db, skillCollection;
 
 
-MongoClient.connect(connectionString, {useUnifiedTopology: true})
-    .then(client => {
-        console.log('Connected to Database...');
-        db = client.db('genshin-trivia');
-        skillCollection = db.collection('chars');
-        app.listen(3000, function() {
-            console.log('listening on 3000');
-        })
-    }) 
-    .catch(error => console.error(error));
+// MongoClient.connect(connectionString, {useUnifiedTopology: true})
+//     .then(client => {
+//         console.log('Connected to Database...');
+//         db = client.db('genshin-trivia');
+//         skillCollection = db.collection('chars');
+
+//         app.listen(3000, function() {
+//             console.log('listening on 3000');
+//         })
+//     }) 
+//     .catch(error => console.error(error));
 
 app.get('/', (req, res) => {
     skillCollection.find().toArray()
@@ -74,6 +75,18 @@ app.delete('/skills', (req, res) => {
     })
     .catch(error => console.error(error))
 })
+
+MongoClient.connect(connectionString, {useUnifiedTopology: true})
+    .then(client => {
+        console.log('Connected to Database...');
+        db = client.db('genshin-trivia');
+        skillCollection = db.collection('chars');
+        
+        app.listen(3000, function() {
+            console.log('listening on 3000');
+        })
+    }) 
+    .catch(error => console.error(error));
 
 // app.listen(3000, function() {
 //     console.log('listening on 3000');

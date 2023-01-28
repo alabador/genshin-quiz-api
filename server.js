@@ -26,7 +26,7 @@ MongoClient.connect(connectionString, {useUnifiedTopology: true})
     .catch(error => console.error(error));
 
 app.get('/', (req, res) => {
-    db.collection('chars').find().toArray()
+    skillCollection.find().toArray()
         .then(results => {
             res.render('index.ejs', {skills: results})
         })
